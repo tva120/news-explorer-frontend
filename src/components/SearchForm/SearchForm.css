@@ -1,0 +1,133 @@
+.searchForm {
+  display: flex;
+  width: 608px;
+  margin: auto;
+  padding: 80px 0;
+  flex-direction: column;
+}
+
+.searchForm__title {
+  font-family: "Roboto Slab", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 60px;
+  line-height: 64px;
+  color: white;
+  margin: 0;
+}
+
+.searchForm__about {
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: white;
+  margin: 32px 0 64px 0;
+}
+
+.searchForm__form {
+  display: flex;
+  flex-direction: row;
+  border-radius: 50px;
+  position: relative;
+}
+
+.searchForm__input {
+  height: 64px;
+  width: calc(80% - 16px);
+  margin: 0;
+  border: none;
+  border-radius: 50px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  padding-left: 16px;
+}
+
+.searchForm__button {
+  width: 168px;
+  height: 66px;
+  background-color: #2f71e5;
+  border: none;
+  border-radius: 50px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  color: white;
+  font-family: "Roboto", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.searchForm__button:hover {
+  background-color: #347eff;
+}
+
+.searchForm__button:active {
+  background-color: #2a65cc;
+}
+
+@media screen and (max-width: 1410px) {
+  .searchForm {
+    padding: 38px 0 48px 0;
+    max-width: 452px;
+  }
+  .searchForm__title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .searchForm__input {
+    height: 56px;
+  }
+  .searchForm__button {
+    height: 58px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .searchForm {
+    padding: 24px 0 32px 0;
+    max-width: 452px;
+  }
+  .searchForm__title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .searchForm__input {
+    height: 56px;
+  }
+  .searchForm__button {
+    height: 58px;
+  }
+  .searchForm__about {
+    margin: 20px 0 30px 0;
+  }
+}
+
+@media screen and (max-width: 601px) {
+  .searchForm {
+    width: min-content;
+  }
+  .searchForm__form {
+    flex-direction: column;
+  }
+  .searchForm__input {
+    width: 272px;
+    margin-bottom: 16px;
+  }
+  .searchForm__button {
+    width: 288px;
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 50px) {
+  .searchForm__about {
+    margin-bottom: 122px;
+  }
+}

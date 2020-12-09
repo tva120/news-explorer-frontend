@@ -3,6 +3,8 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+
 import { api } from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -18,12 +20,6 @@ const App = () => {
 	const [currentUser, setCurrentUser] = React.useState({});
 	const [isExtraPopupOpen, setIsExtraPopupOpen] = React.useState(false);
 
-	//setLoggedIn();
-
-	React.useEffect(() => {
-		setKeyWord(localStorage.getItem('search'));
-	}, [loggedIn]);
-
 	const [isLoginOpen, setIsLoginOpen] = React.useState(false);
 
 	const handleLoginSubmit = (loginEmail, loginPassword) => {
@@ -36,7 +32,9 @@ const App = () => {
 					setIsLoginOpen(false);
 				}
 			})
-			.catch((err) => console.warn(err));
+			.catch(() => {
+				setErrorMessage('Ошибка авторизациии');
+			});
 	};
 
 	const handleRegistrationSubmit = (password, email, name) => {
@@ -48,7 +46,7 @@ const App = () => {
 				setIsExtraPopupOpen(true);
 			})
 			.catch(() => {
-				setErrorMessage('Такой пользователь уже есть');
+				setErrorMessage('Пользователь существует');
 			});
 	};
 
@@ -60,19 +58,25 @@ const App = () => {
 					if (res) {
 						setLoggedIn(true);
 						setCurrentUser(res);
+						setErrorMessage('');
 					}
 				})
-				.catch((err) => console.warn(err));
+				.catch(() => {
+					setErrorMessage('Ошибка проврки токена');
+				});
 		}
 		return () => {};
 	};
 
-	const handleLoginOut = () => {
+	const handleLogOut = () => {
 		setLoggedIn(false);
 		setCurrentUser({});
 		setSavedArticles([]);
 		localStorage.removeItem('token');
 	};
+	React.useEffect(() => {
+		setKeyWord(localStorage.getItem('search'));
+	}, [loggedIn]);
 
 	React.useEffect(() => {
 		tokenCheck();
@@ -101,25 +105,26 @@ const App = () => {
 								setIsLoginOpen={setIsLoginOpen}
 								setErrorMessage={setErrorMessage}
 								errorMessage={errorMessage}
-								handleLoginOut={handleLoginOut}
+								handleLogOut={handleLogOut}
 								handleRegistrationSubmit={handleRegistrationSubmit}
 								setIsExtraPopupOpen={setIsExtraPopupOpen}
 								isExtraPopupOpen={isExtraPopupOpen}
 							/>
 						</Route>
-						<Route path="/saved-news">
-							<SavedNews
-								loggedIn={loggedIn}
-								savedArticles={savedArticles}
-								setSavedArticles={setSavedArticles}
-								handleLoginOut={handleLoginOut}
-							/>
-						</Route>
+						<ProtectedRoute
+							path="/saved-news"
+							loggedIn={loggedIn}
+							savedArticles={savedArticles}
+							setSavedArticles={setSavedArticles}
+							handleLogOut={handleLogOut}
+							exact
+							component={SavedNews}
+						></ProtectedRoute>
 					</Switch>
 				</BrowserRouter>
 			</CurrentUserContext.Provider>
 		</div>
 	);
 };
-export default React.memo(App);
-//export default App;
+
+export default App;

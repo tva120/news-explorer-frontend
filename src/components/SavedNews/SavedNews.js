@@ -5,10 +5,10 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import Footer from '../Footer/Footer';
 
-function SavedNews({ loggedIn, handleLoginOut, savedArticles, setSavedArticles }) {
+function SavedNews({ loggedIn, handleLogOut, savedArticles, setSavedArticles }) {
 	return (
 		<>
-			<Header loggedIn={loggedIn} handleLoginOut={handleLoginOut} />
+			<Header loggedIn={loggedIn} handleLogOut={handleLogOut} />
 			<SavedNewsHeader />
 			<NewsCardList
 				saved={true}

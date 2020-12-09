@@ -29,7 +29,7 @@ const Main = ({
 	setIsRegister,
 	setErrorMessage,
 	errorMessage,
-	handleLoginOut,
+	handleLogOut,
 	handleRegistrationSubmit,
 	isLoginOpen,
 	setIsLoginOpen,
@@ -81,7 +81,7 @@ const Main = ({
 					toggleForm={toggleLoginForm}
 					isLightTheme={true}
 					isPopupOpen={isLoginOpen}
-					handleLoginOut={handleLoginOut}
+					handleLogOut={handleLogOut}
 					loggedIn={loggedIn}
 					setLoggedIn={setLoggedIn}
 					isLoginOpen={isLoginOpen}
@@ -124,6 +124,7 @@ const Main = ({
 				setIsRegisterOpen={setIsRegister}
 				setErrorMessage={setErrorMessage}
 				onLoginSubmit={handleLoginSubmit}
+				errorMessage={errorMessage}
 			/>
 			<Register
 				isPopupOpen={isRegister}

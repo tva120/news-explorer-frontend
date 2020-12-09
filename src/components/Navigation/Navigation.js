@@ -4,7 +4,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import './Navigation.css';
 
-function Navigation({ toggleForm, isLightTheme, isPopupOpen, handleBurger, isMenuOpen, loggedIn, handleLoginOut }) {
+function Navigation({ toggleForm, isLightTheme, isPopupOpen, handleBurger, isMenuOpen, loggedIn, handleLogOut }) {
 	const [name, setName] = React.useState('');
 	const { currentUser } = React.useContext(CurrentUserContext);
 	const history = useHistory();
@@ -15,7 +15,7 @@ function Navigation({ toggleForm, isLightTheme, isPopupOpen, handleBurger, isMen
 	};
 
 	function handleEllipseClose() {
-		handleLoginOut();
+		handleLogOut();
 		history.push('/');
 	}
 

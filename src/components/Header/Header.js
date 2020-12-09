@@ -9,7 +9,7 @@ const Header = ({
 	isPopupOpen,
 	user,
 	setErrorMessage,
-	handleLoginOut,
+	handleLogOut,
 	loggedIn,
 	setLoggedIn,
 	currentUser,
@@ -35,7 +35,7 @@ const Header = ({
 					handleBurger={handleBurger}
 					isMenuOpen={isMenuOpen}
 					user={user}
-					handleLoginOut={handleLoginOut}
+					handleLogOut={handleLogOut}
 					loggedIn={loggedIn}
 					setLoggedIn={setLoggedIn}
 					currentUser={currentUser}
@@ -49,5 +49,5 @@ const Header = ({
 		</div>
 	);
 };
-export default React.memo(Header);
-//export default Header;
+
+export default Header;

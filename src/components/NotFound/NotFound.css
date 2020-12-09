@@ -1,0 +1,47 @@
+.icon-not {
+	width: 96px;
+	height: 96px;
+	background-image: url(../../images/notFound.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.notFound {
+	text-align: center;
+	flex-direction: column;
+	align-items: center;
+	display: none;
+	justify-content: center;
+	height: 384px;
+}
+
+.notFound_active {
+	display: flex;
+}
+
+.notFound__img {
+	width: 96px;
+	height: 96px;
+	background-image: url(../../images/notFound.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50%;
+}
+
+.notFound__title {
+	font-family: 'Roboto Slab', Arial, sans-serif;
+	font-size: 26px;
+	line-height: 30px;
+	color: #1a1b22;
+	padding-top: 31.5px;
+	margin: 0;
+}
+
+.notFound__text {
+	max-width: 340px;
+	font-size: 18px;
+	line-height: 24px;
+	color: #b6bcbf;
+	margin: 0;
+	padding-top: 16px;
+}
